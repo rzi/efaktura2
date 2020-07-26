@@ -9,10 +9,6 @@ users.use(cors())
 
 process.env.SECRET_KEY = 'secret'
 
-users.get("/", (req,res)=> {
-  res.send( "test")
-})
-
 users.post('/register', (req, res) => {
   const today = new Date()
   console.log ("registrer " + today)
@@ -36,14 +32,14 @@ users.post('/register', (req, res) => {
           userData.password = hash
           User.create(userData)
             .then(user => {
-              res.json({ status: user.email + 'Registered!' })
+              res.json({ status: user.email + 'Zarejestrowany!' })
             })
             .catch(err => {
               res.send('error: ' + err)
             })
         })
       } else {
-        res.json({ error: 'User already exists' })
+        res.json({ error: 'Użytkownik już istnieje' })
       }
     })
     .catch(err => {
@@ -66,7 +62,7 @@ users.post('/login', (req, res) => {
           res.send(token)
         }
       } else {
-        res.status(400).json({ error: 'User does not exist' })
+        res.status(400).json({ error: 'Użytkownik nie istnieje' })
       }
     })
     .catch(err => {
@@ -86,7 +82,7 @@ users.get('/profile', (req, res) => {
       if (user) {
         res.json(user)
       } else {
-        res.send('User does not exist')
+        res.send('Użytkownik nie istnieje')
       }
     })
     .catch(err => {

@@ -36,6 +36,11 @@ class Landing extends Component {
             Logout
           </a>
         </li>
+        <li className="nav-item">
+        <Link to="/invoice" className="nav-link">
+            Faktury
+          </Link>
+        </li>
       </ul>
     )
 
